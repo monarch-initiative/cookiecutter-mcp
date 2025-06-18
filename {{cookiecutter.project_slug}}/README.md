@@ -21,7 +21,7 @@ uv pip install -e .
 You can use the CLI:
 
 ```bash
-{{ cookiecutter.project_slug }}
+{{ cookiecutter.project_slug|replace('-', '_') }} 
 ```
 
 Or import in your Python code:

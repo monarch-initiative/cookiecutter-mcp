@@ -8,7 +8,7 @@ import requests
 from fastmcp import FastMCP
 
 
-# API WRAPPER SECTION
+# API WRAPPER SECTION, in case you need to interact with API
 def fetch_records_paged(
     endpoint: str,
     max_page_size: int = 100,
@@ -39,7 +39,7 @@ def fetch_records_paged(
         A list of dictionaries, where each dictionary represents a record.
     """
     base_url: str = "{{ cookiecutter.api_base_url }}"
-    
+
     all_records = []
     endpoint_url = f"{base_url}/{endpoint}"
     params = {"max_page_size": max_page_size}
@@ -93,23 +93,23 @@ def sample_tool_function(
 ) -> List[Dict[str, Any]]:
     """
     Sample tool function to demonstrate how to create a tool for your MCP.
-    
+
     Args:
         parameter1: Description of parameter1
         parameter2: Description of parameter2, with default value
-        
+
     Returns:
         List[Dict[str, Any]]: List of records matching the criteria
     """
     # Example of how to use the API wrapper
     filter_criteria = {"field1": parameter1, "field2": {"$gt": parameter2}}
-    
+
     records = fetch_records_paged(
         endpoint="your_endpoint",
         filter_criteria=filter_criteria,
         max_records=parameter2,
     )
-    
+
     # Process records if needed
     processed_records = []
     for record in records:
@@ -120,7 +120,7 @@ def sample_tool_function(
             # Add other fields as needed
         }
         processed_records.append(processed_record)
-    
+
     return processed_records
 
 

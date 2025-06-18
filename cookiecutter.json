@@ -1,0 +1,14 @@
+{
+  "project_name": "MCP Project",
+  "project_slug": "{{ cookiecutter.project_name|lower|replace(' ', '-')|replace('_', '-') }}",
+  "package_name": "{{ cookiecutter.project_slug|replace('-', '_') }}",
+  "project_description": "A model context protocol (MCP) for interacting with data or tools.",
+  "database_name": "database_name",
+  "api_base_url": "https://api.example.org",
+  "author_name": "Your Name",
+  "author_email": "your.email@example.com",
+  "github_username": "username",
+  "version": "0.1.0",
+  "python_version": ">=3.11",
+  "license": ["MIT", "Apache-2.0", "BSD-3-Clause", "GPL-3.0"]
+}

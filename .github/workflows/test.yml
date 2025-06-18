@@ -1,0 +1,60 @@
+name: Test Template
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install cookiecutter pytest
+        
+    - name: Test template generation
+      run: |
+        # Generate a project using the template with default values
+        python -c "
+        from cookiecutter.main import cookiecutter
+        cookiecutter(
+            './',
+            no_input=True,
+            extra_context={
+                'project_name': 'Test MCP',
+                'project_description': 'A test MCP project',
+                'database_name': 'testdb',
+                'api_base_url': 'https://api.example.org',
+                'author_name': 'Test User',
+                'author_email': 'test@example.com',
+                'github_username': 'testuser',
+            }
+        )
+        "
+        
+    - name: Verify generated project
+      run: |
+        # Check that the project was generated with the expected structure
+        test -d "test-mcp"
+        test -f "test-mcp/README.md"
+        test -f "test-mcp/pyproject.toml"
+        test -d "test-mcp/src/test_mcp"
+        test -f "test-mcp/src/test_mcp/__init__.py"
+        test -f "test-mcp/src/test_mcp/main.py"
+        test -f "test-mcp/src/test_mcp/api.py"
+        test -f "test-mcp/src/test_mcp/tools.py"
+        test -d "test-mcp/tests"

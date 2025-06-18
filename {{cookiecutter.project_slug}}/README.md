@@ -46,11 +46,6 @@ cd {{ cookiecutter.project_slug }}
 uv pip install -e ".[dev]"
 ```
 
-### Running Tests
-
-```bash
-pytest
-```
 
 ## License
 

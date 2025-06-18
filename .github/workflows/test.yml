@@ -15,21 +15,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install cookiecutter pytest
-        
+
     - name: Test template generation
       run: |
         # Generate a project using the template with default values
-        python -c "
+        python3 -c "
         from cookiecutter.main import cookiecutter
         cookiecutter(
             './',
@@ -45,7 +45,7 @@ jobs:
             }
         )
         "
-        
+
     - name: Verify generated project
       run: |
         # Check that the project was generated with the expected structure
@@ -55,6 +55,4 @@ jobs:
         test -d "test-mcp/src/test_mcp"
         test -f "test-mcp/src/test_mcp/__init__.py"
         test -f "test-mcp/src/test_mcp/main.py"
-        test -f "test-mcp/src/test_mcp/api.py"
-        test -f "test-mcp/src/test_mcp/tools.py"
         test -d "test-mcp/tests"

@@ -21,10 +21,19 @@ cookiecutter cookiecutter-mcp
 
 After creating your project:
 
-1. Initialize a git repository (this happens automatically)
-2. Create a virtual environment
-3. Install the package in development mode with uv:
+1. Navigate to your project directory:
    ```bash
+   cd your_project_name
+   ```
+2. Create a virtual environment (optional)
+   ```bash
+   uv venv
+   source .venv/bin/activate
+   ```
+3. Install the package with uv:
+   ```bash
+   uv lock
    uv pip install -e ".[dev]"
+   uv run [your_project_name]
    ```
 4. Start developing your MCP tools in `src/your_package_name/tools.py`

@@ -27,7 +27,7 @@ dev = [
 "Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues"
 
 [project.scripts]
-{{ cookiecutter.project_slug|replace('-', '_') }} = "{{ cookiecutter.package_name }}.main:main"
+{{ cookiecutter.project_slug }} = "{{ cookiecutter.package_name }}.main:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/{{ cookiecutter.package_name }}"]

@@ -4,24 +4,24 @@
 
 ## Installation
 
-You can install the package from source:
+Install the package with uv:
 
 ```bash
-pip install -e .
-```
-
-Or using uv:
-
-```bash
-uv pip install -e .
+uv sync --dev
 ```
 
 ## Usage
 
-You can use the CLI:
+You can run the MCP:
 
 ```bash
-{{ cookiecutter.project_slug|replace('-', '_') }} 
+uv run {{ cookiecutter.project_slug|replace('_', '-') }}
+```
+
+Or install globally and run:
+
+```bash
+uvx {{ cookiecutter.project_slug|replace('_', '-') }}
 ```
 
 Or import in your Python code:
@@ -43,7 +43,7 @@ git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.
 cd {{ cookiecutter.project_slug }}
 
 # Install development dependencies
-uv pip install -e ".[dev]"
+uv sync --dev
 ```
 
 

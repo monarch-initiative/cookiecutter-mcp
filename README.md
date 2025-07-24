@@ -25,15 +25,14 @@ After creating your project:
    ```bash
    cd your_project_name
    ```
-2. Create a virtual environment (optional)
+2. Install the package with uv:
    ```bash
-   uv venv
-   source .venv/bin/activate
-   ```
-3. Install the package with uv:
-   ```bash
-   uv lock
-   uv pip install -e ".[dev]"
+   uv sync --dev --extras
    uv run [your_project_name]
    ```
-4. Start developing your MCP tools in `src/your_package_name/tools.py`
+3. Start developing your MCP tools in `src/your_package_name/tools.py`
+
+4. After you publish to PyPI, you can skip steps 1-3 and do this:
+   ```bash
+   uvx [your_project_name]
+   ```
